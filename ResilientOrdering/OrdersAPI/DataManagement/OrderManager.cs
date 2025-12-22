@@ -1,0 +1,67 @@
+﻿using OrdersAPI.Data;
+using OrdersAPI.Data.DataTransferObjects;
+using OrdersAPI.Data.DataTransferObjects.OrderDTOs;
+using OrdersAPI.Data.Tables;
+using OrdersAPI.Mappers;
+
+namespace OrdersAPI.DataManagement
+{
+    public class OrderManager : DataManager
+    {
+
+        public OrderManager() : base() { }
+
+        public NetworkTransferObject<OrderDTO> GetOrder(Guid orderId)
+        {
+            Order? order = Database.Orders.FirstOrDefault(x => x.Id == orderId);
+
+            if (order == null) return new NetworkTransferObject<OrderDTO>(null, new NullReferenceException("No such order record exists"));
+
+            OrderDTO orderDTO = OrderMapper.ToOrderDTO(order);
+            GetOrderNavigationProperties(orderDTO, order);
+
+            return new NetworkTransferObject<OrderDTO>(orderDTO, null);
+        }
+
+        private void GetOrderNavigationProperties(OrderDTO orderDTO, Order order)
+        {
+            Customer customer = Database.Customers.First(x => x.Id == order.CustomerId);
+            orderDTO.Customer = CustomerMapper.ToCustomerDTO(customer);
+
+            List<Product> products = Database.Products.Where(x => order.ProductIds.Contains(x.Id)).ToList();
+            foreach (Product product in products)
+            {
+                orderDTO.Products.Add(ProductMapper.ToProductDTO(product));
+            }
+        }
+
+        public NetworkTransferObject<List<OrderDTO>> GetOrders()
+        {
+            List<OrderDTO> orderDtos = new List<OrderDTO>();
+
+            List<Order> orders = Database.Orders.ToList();
+
+            foreach (Order order in orders)
+            {
+                OrderDTO orderDto = OrderMapper.ToOrderDTO(order);
+
+                GetOrderNavigationProperties(orderDto, order);
+
+                orderDtos.Add(orderDto);
+            }
+
+            return new NetworkTransferObject<List<OrderDTO>>(orderDtos, null);
+        }
+
+        public bool AddNewOrder(NetworkTransferObject<NewOrderDTO> newOrder)
+        {
+            if (newOrder.TransferObject == null) return false;
+
+            Order order = OrderMapper.ToOrder(newOrder.TransferObject);
+
+            Database.Orders.Add(order);
+
+            return true;
+        }
+    }
+}
