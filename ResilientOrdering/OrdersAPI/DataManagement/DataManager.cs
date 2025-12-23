@@ -1,7 +1,4 @@
 ﻿using OrdersAPI.Data;
-using OrdersAPI.Data.DataTransferObjects;
-using OrdersAPI.Data.DataTransferObjects.OrderDTOs;
-using OrdersAPI.Data.Tables;
 
 namespace OrdersAPI.DataManagement
 {

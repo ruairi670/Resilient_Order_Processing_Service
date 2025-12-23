@@ -2,11 +2,12 @@
 using OrdersAPI.Data.DataTransferObjects;
 using OrdersAPI.Data.DataTransferObjects.OrderDTOs;
 using OrdersAPI.Data.Tables;
+using OrdersAPI.DataManagement.Interfaces;
 using OrdersAPI.Mappers;
 
 namespace OrdersAPI.DataManagement
 {
-    public class OrderManager : DataManager
+    public class OrderManager : DataManager, IOrderManager
     {
 
         public OrderManager() : base() { }
@@ -53,15 +54,15 @@ namespace OrdersAPI.DataManagement
             return new NetworkTransferObject<List<OrderDTO>>(orderDtos, null);
         }
 
-        public bool AddNewOrder(NetworkTransferObject<NewOrderDTO> newOrder)
+        public Guid? AddNewOrder(NewOrderDTO newOrder)
         {
-            if (newOrder.TransferObject == null) return false;
+            if (newOrder == null) return null;
 
-            Order order = OrderMapper.ToOrder(newOrder.TransferObject);
+            Order order = OrderMapper.ToOrder(newOrder);
 
             Database.Orders.Add(order);
 
-            return true;
+            return order.Id;
         }
     }
 }

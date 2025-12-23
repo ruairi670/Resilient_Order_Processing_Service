@@ -21,25 +21,25 @@ namespace OrdersAPI.Data
 
         private void SetUpOrders()
         {
-            Orders.Add(new Order()
+            Orders.Add(new Order(Guid.Parse("146fd72c-b81c-4c45-b4d5-aece715313cf"))
             {
                 CustomerId = Customers.ElementAt(0).Id,
                 ProductIds = new List<Guid>() { Products.ElementAt(0).Id, Products.ElementAt(2).Id }
             });
 
-            Orders.Add(new Order()
+            Orders.Add(new Order(Guid.Parse("958b482f-6552-4924-a9f8-74aefe104216"))
             {
                 CustomerId = Customers.ElementAt(1).Id,
                 ProductIds = new List<Guid>() { Products.ElementAt(2).Id, Products.ElementAt(3).Id }
             });
 
-            Orders.Add(new Order()
+            Orders.Add(new Order(Guid.Parse("8f32d954-dd18-4a7e-92d7-2259feb66b10"))
             {
                 CustomerId = Customers.ElementAt(2).Id,
                 ProductIds = new List<Guid>() { Products.ElementAt(1).Id, Products.ElementAt(2).Id }
             });
 
-            Orders.Add(new Order()
+            Orders.Add(new Order(Guid.Parse("170480b0-f3f3-4c70-b2cc-acd449b8bff1"))
             {
                 CustomerId = Customers.ElementAt(3).Id,
                 ProductIds = new List<Guid>() { Products.ElementAt(0).Id, Products.ElementAt(1).Id }

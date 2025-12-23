@@ -44,5 +44,15 @@
             OutForDelivery = false;
             Delivered = false;
         }
+
+
+        /// <summary>
+        /// Constructor for testing purposes, need to keep record of Ids for testing getter methods
+        /// </summary>
+        /// <param name="id"></param>
+        public Order(Guid id)
+        {
+            Id = id;
+        }
     }
 }
