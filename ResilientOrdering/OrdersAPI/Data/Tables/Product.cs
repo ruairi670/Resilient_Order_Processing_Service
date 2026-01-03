@@ -2,7 +2,7 @@
 {
     public class Product
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
@@ -14,16 +14,20 @@
 
         public Product()
         {
-            Id = Guid.NewGuid();
         }
 
-        public Product(string name, string description, decimal price, int quantityInInventory)
-            : this()
+        public Product(int id, string name, string description, decimal price, int quantityInInventory)
+            : this(id)
         {
             Name = name;
             Description = description;
             Price = price;
             QuantityInInventory = quantityInInventory;
+        }
+
+        public Product(int id)
+        {
+            Id = id;
         }
     }
 }

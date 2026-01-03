@@ -6,9 +6,9 @@ namespace OrdersAPI.Data.DataTransferObjects.OrderDTOs
 {
     public class NewOrderDTO : BaseDTO
     {
-        public Guid CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
-        public List<Guid> ProductIds { get; set; }
+        public List<int> ProductIds { get; set; }
 
         public DateTime OrderDate { get; set; }
 

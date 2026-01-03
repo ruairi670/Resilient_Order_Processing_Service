@@ -6,7 +6,7 @@ namespace OrdersAPI.Data.DataTransferObjects.OrderDTOs
 {
     public class OrderDTO : BaseDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public CustomerDTO Customer { get; set; }
 

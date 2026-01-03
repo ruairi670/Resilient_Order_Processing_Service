@@ -21,34 +21,38 @@ namespace OrdersAPI.Data
 
         private void SetUpOrders()
         {
-            Orders.Add(new Order(Guid.Parse("146fd72c-b81c-4c45-b4d5-aece715313cf"))
+            Orders.Add(new Order(1)
             {
                 CustomerId = Customers.ElementAt(0).Id,
-                ProductIds = new List<Guid>() { Products.ElementAt(0).Id, Products.ElementAt(2).Id }
+                ProductIds = new List<int>() { Products.ElementAt(0).Id, Products.ElementAt(2).Id },
+                DateToBeDelivered = DateTime.Now.AddDays(1)
             });
 
-            Orders.Add(new Order(Guid.Parse("958b482f-6552-4924-a9f8-74aefe104216"))
+            Orders.Add(new Order(2)
             {
                 CustomerId = Customers.ElementAt(1).Id,
-                ProductIds = new List<Guid>() { Products.ElementAt(2).Id, Products.ElementAt(3).Id }
+                ProductIds = new List<int>() { Products.ElementAt(2).Id, Products.ElementAt(3).Id },
+                DateToBeDelivered = DateTime.Now.AddDays(5)
             });
 
-            Orders.Add(new Order(Guid.Parse("8f32d954-dd18-4a7e-92d7-2259feb66b10"))
+            Orders.Add(new Order(3)
             {
                 CustomerId = Customers.ElementAt(2).Id,
-                ProductIds = new List<Guid>() { Products.ElementAt(1).Id, Products.ElementAt(2).Id }
+                ProductIds = new List<int>() { Products.ElementAt(1).Id, Products.ElementAt(2).Id },
+                DateToBeDelivered = DateTime.Now.AddDays(13)
             });
 
-            Orders.Add(new Order(Guid.Parse("170480b0-f3f3-4c70-b2cc-acd449b8bff1"))
+            Orders.Add(new Order(4)
             {
                 CustomerId = Customers.ElementAt(3).Id,
-                ProductIds = new List<Guid>() { Products.ElementAt(0).Id, Products.ElementAt(1).Id }
+                ProductIds = new List<int>() { Products.ElementAt(0).Id, Products.ElementAt(1).Id },
+                DateToBeDelivered = DateTime.Now.AddDays(21)
             });
         }
 
         private void SetUpCustomers()
         {
-            Customers.Add(new Customer()
+            Customers.Add(new Customer(1)
             {
                 FirstName = "John",
                 LastName = "Doe",
@@ -56,7 +60,7 @@ namespace OrdersAPI.Data
                 PrimaryAddress = "123 Test Street, CPU Vile"
             });
 
-            Customers.Add(new Customer()
+            Customers.Add(new Customer(2)
             {
                 FirstName = "Jane",
                 LastName = "Dun",
@@ -64,7 +68,7 @@ namespace OrdersAPI.Data
                 PrimaryAddress = "12 Test Ave, CPU Vile"
             });
 
-            Customers.Add(new Customer()
+            Customers.Add(new Customer(3)
             {
                 FirstName = "Frank",
                 LastName = "Windows",
@@ -72,7 +76,7 @@ namespace OrdersAPI.Data
                 PrimaryAddress = "43 RAM Drive, CPU Vile"
             });
 
-            Customers.Add(new Customer()
+            Customers.Add(new Customer(4)
             {
                 FirstName = "John",
                 LastName = "Billard",
@@ -80,7 +84,7 @@ namespace OrdersAPI.Data
                 PrimaryAddress = "2 In Out Boulevard, Testland"
             });
 
-            Customers.Add(new Customer()
+            Customers.Add(new Customer(5)
             {
                 FirstName = "Sarah",
                 LastName = "Bus",
@@ -91,7 +95,7 @@ namespace OrdersAPI.Data
 
         private void SetUpProducts()
         {
-            Products.Add(new Product()
+            Products.Add(new Product(1)
             {
                 Name = "Initilisor 5000x",
                 Description = "Computer initilisor, wakey wakey machine",
@@ -99,7 +103,7 @@ namespace OrdersAPI.Data
                 QuantityInInventory = 100
             });
 
-            Products.Add(new Product()
+            Products.Add(new Product(2)
             {
                 Name = "Quantum Entangler",
                 Description = "Entangales quantum space into a custom sized cube - always wear goggles! (Goggles not included)",
@@ -107,7 +111,7 @@ namespace OrdersAPI.Data
                 QuantityInInventory = 10
             });
 
-            Products.Add(new Product()
+            Products.Add(new Product(3)
             {
                 Name = "Flux Maxim",
                 Description = "Black hole PSU, pulls power directly from Dark Space",
@@ -115,7 +119,7 @@ namespace OrdersAPI.Data
                 QuantityInInventory = 25
             });
 
-            Products.Add(new Product()
+            Products.Add(new Product(4)
             {
                 Name = "16K HDMI Cable",
                 Description = "16 times the detail!",
@@ -123,7 +127,7 @@ namespace OrdersAPI.Data
                 QuantityInInventory = 250
             });
 
-            Products.Add(new Product()
+            Products.Add(new Product(5)
             {
                 Name = "The 'Brain' Circuit",
                 Description = "Definitely not a brain hooked up to a mother board",

@@ -37,7 +37,7 @@ namespace OrdersAPI.Controllers
         }
 
         [HttpGet("GetOrders/{id}")]
-        public NetworkTransferObject<OrderDTO> GetOrder(Guid id)
+        public NetworkTransferObject<OrderDTO> GetOrder(int id)
         {
             NetworkTransferObject<OrderDTO> order = _orderManager.GetOrder(id);
 
@@ -47,9 +47,9 @@ namespace OrdersAPI.Controllers
         }
 
         [HttpPost("PostOrder")]
-        public Guid? PostOrder([FromBody] NewOrderDTO newOrder)
+        public int? PostOrder([FromBody] NewOrderDTO newOrder)
         {
-            Guid? newOrderId = _orderManager.AddNewOrder(newOrder);
+            int? newOrderId = _orderManager.AddNewOrder(newOrder);
 
             return newOrderId;
         }

@@ -4,7 +4,7 @@ namespace OrdersAPI.Data.DataTransferObjects.CustomerDTOs
 {
     public class EditCustomerDTO : BaseDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; } = string.Empty;
 

@@ -12,7 +12,7 @@ namespace OrdersAPI.DataManagement
 
         public OrderManager() : base() { }
 
-        public NetworkTransferObject<OrderDTO> GetOrder(Guid orderId)
+        public NetworkTransferObject<OrderDTO> GetOrder(int orderId)
         {
             Order? order = Database.Orders.FirstOrDefault(x => x.Id == orderId);
 
@@ -54,7 +54,7 @@ namespace OrdersAPI.DataManagement
             return new NetworkTransferObject<List<OrderDTO>>(orderDtos, null);
         }
 
-        public Guid? AddNewOrder(NewOrderDTO newOrder)
+        public int? AddNewOrder(NewOrderDTO newOrder)
         {
             if (newOrder == null) return null;
 

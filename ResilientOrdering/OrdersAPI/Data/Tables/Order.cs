@@ -2,11 +2,11 @@
 {
     public class Order
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public Guid CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
-        public List<Guid> ProductIds { get; set; } = new List<Guid>();
+        public List<int> ProductIds { get; set; } = new List<int>();
 
         public DateTime OrderDate { get; set; }
 
@@ -29,11 +29,21 @@
 
         public Order()
         {
-            Id = Guid.NewGuid();
         }
 
-        public Order (Guid customerId, List<Guid> productIds, DateTime orderDate, DateTime dateToBeDelivered)
-            : this()
+        public Order (int customerId, List<int> productIds, DateTime orderDate, DateTime dateToBeDelivered)
+        {
+            CustomerId = customerId;
+            ProductIds = productIds;
+            OrderDate = orderDate;
+            DateToBeDelivered = dateToBeDelivered;
+
+            Processed = false;
+            OutForDelivery = false;
+            Delivered = false;
+        }
+
+        public Order(int id, int customerId, List<int> productIds, DateTime orderDate, DateTime dateToBeDelivered) : this(id)
         {
             CustomerId = customerId;
             ProductIds = productIds;
@@ -50,7 +60,7 @@
         /// Constructor for testing purposes, need to keep record of Ids for testing getter methods
         /// </summary>
         /// <param name="id"></param>
-        public Order(Guid id)
+        public Order(int id)
         {
             Id = id;
         }

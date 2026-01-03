@@ -5,10 +5,10 @@ namespace OrdersAPI.DataManagement.Interfaces
 {
     public interface IOrderManager
     {
-        NetworkTransferObject<OrderDTO> GetOrder(Guid orderId);
+        NetworkTransferObject<OrderDTO> GetOrder(int orderId);
 
         NetworkTransferObject<List<OrderDTO>> GetOrders();
 
-        Guid? AddNewOrder(NewOrderDTO newOrder);
+        int? AddNewOrder(NewOrderDTO newOrder);
     }
 }

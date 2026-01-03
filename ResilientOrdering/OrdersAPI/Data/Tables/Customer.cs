@@ -2,7 +2,7 @@
 {
     public class Customer
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -13,16 +13,28 @@
 
         public Customer()
         {
-            Id = Guid.NewGuid();
         }
 
         public Customer (string firstName, string lastName,  string email, string primaryAddress)
-            : this()
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             PrimaryAddress = primaryAddress;
+        }
+
+        public Customer(int id, string firstName, string lastName, string email, string primaryAddress)
+            : this(id)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PrimaryAddress = primaryAddress;
+        }
+
+        public Customer(int id)
+        {
+            Id = id;
         }
     }
 }
