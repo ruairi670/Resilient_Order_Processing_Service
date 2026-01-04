@@ -58,11 +58,37 @@ namespace OrdersAPI.DataManagement
         {
             if (newOrder == null) return null;
 
+            if (!VerifyOrderDetails(newOrder)) return null;
+
             Order order = OrderMapper.ToOrder(newOrder);
 
             Database.Orders.Add(order);
 
             return order.Id;
+        }
+
+        private bool VerifyOrderDetails(NewOrderDTO newOrder)
+        {
+            bool verified = true;
+
+            Customer? customer = Database.Customers.FirstOrDefault(x => x.Id == newOrder.CustomerId);
+            if (customer == null) verified = false;
+
+            if (verified)
+            {
+                foreach (int id in newOrder.ProductIds)
+                {
+                    Product? product = Database.Products.FirstOrDefault(x => x.Id == id);
+
+                    if (product == null)
+                    {
+                        verified = false;
+                        break;
+                    }
+                }
+            }
+
+            return verified;
         }
     }
 }

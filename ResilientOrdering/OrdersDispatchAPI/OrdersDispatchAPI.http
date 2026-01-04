@@ -1,0 +1,6 @@
+@OrdersDispatchAPI_HostAddress = http://localhost:5122
+
+GET {{OrdersDispatchAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
