@@ -1,5 +1,5 @@
-﻿using OrdersAPI.Data.DataTransferObjects.CustomerDTOs;
-using OrdersAPI.Data.Tables;
+﻿using DataModels.Data.DataTransferObjects.CustomerDTOs;
+using DataModels.Data.Tables;
 
 namespace OrdersAPI.Mappers
 {

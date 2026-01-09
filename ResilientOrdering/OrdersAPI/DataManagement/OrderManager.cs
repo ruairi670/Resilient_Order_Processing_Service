@@ -1,7 +1,6 @@
-﻿using OrdersAPI.Data;
-using OrdersAPI.Data.DataTransferObjects;
-using OrdersAPI.Data.DataTransferObjects.OrderDTOs;
-using OrdersAPI.Data.Tables;
+﻿using DataModels.Data.DataTransferObjects;
+using DataModels.Data.DataTransferObjects.OrderDTOs;
+using DataModels.Data.Tables;
 using OrdersAPI.DataManagement.Interfaces;
 using OrdersAPI.Mappers;
 
@@ -12,7 +11,7 @@ namespace OrdersAPI.DataManagement
 
         public OrderManager() : base() { }
 
-        public NetworkTransferObject<OrderDTO> GetOrder(int orderId)
+        public NetworkTransferObject<OrderDTO> GetOrder(Guid orderId)
         {
             Order? order = Database.Orders.FirstOrDefault(x => x.Id == orderId);
 
@@ -54,7 +53,7 @@ namespace OrdersAPI.DataManagement
             return new NetworkTransferObject<List<OrderDTO>>(orderDtos, null);
         }
 
-        public int? AddNewOrder(NewOrderDTO newOrder)
+        public Guid? AddNewOrder(NewOrderDTO newOrder)
         {
             if (newOrder == null) return null;
 
@@ -76,7 +75,7 @@ namespace OrdersAPI.DataManagement
 
             if (verified)
             {
-                foreach (int id in newOrder.ProductIds)
+                foreach (Guid id in newOrder.ProductIds)
                 {
                     Product? product = Database.Products.FirstOrDefault(x => x.Id == id);
 

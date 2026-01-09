@@ -1,9 +1,11 @@
-﻿using OrdersAPI.Data.DataTransferObjects.Base;
+﻿using DataModels.Data.DataTransferObjects.Base;
 
-namespace OrdersAPI.Data.DataTransferObjects.ProductDTOs
+namespace DataModels.Data.DataTransferObjects.ProductDTOs
 {
-    public class NewProductDTO : BaseDTO
+    public class ProductDTO : BaseDTO
     {
+        public Guid Id { get; set; }
+
         public string Name { get; set; } = string.Empty;
 
         public string Description { get; set; } = string.Empty;

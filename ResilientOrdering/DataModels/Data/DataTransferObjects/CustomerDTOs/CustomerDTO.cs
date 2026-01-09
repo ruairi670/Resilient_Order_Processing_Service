@@ -1,10 +1,10 @@
-﻿using OrdersAPI.Data.DataTransferObjects.Base;
+﻿using DataModels.Data.DataTransferObjects.Base;
 
-namespace OrdersAPI.Data.DataTransferObjects.CustomerDTOs
+namespace DataModels.Data.DataTransferObjects.CustomerDTOs
 {
-    public class EditCustomerDTO : BaseDTO
+    public class CustomerDTO : BaseDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string FirstName { get; set; } = string.Empty;
 

@@ -1,8 +1,8 @@
-﻿using OrdersAPI.Data.DataTransferObjects.Base;
+﻿using DataModels.Data.DataTransferObjects.Base;
 
-namespace OrdersAPI.Data.DataTransferObjects.CustomerDTOs
+namespace DataModels.Data.DataTransferObjects.CustomerDTOs
 {
-    public class CustomerDTO : BaseDTO
+    public class EditCustomerDTO : BaseDTO
     {
         public int Id { get; set; }
 

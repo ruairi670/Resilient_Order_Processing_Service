@@ -1,8 +1,8 @@
-﻿namespace OrdersAPI.Data.Tables
+﻿namespace DataModels.Data.Tables
 {
     public class Product
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
@@ -16,7 +16,7 @@
         {
         }
 
-        public Product(int id, string name, string description, decimal price, int quantityInInventory)
+        public Product(Guid id, string name, string description, decimal price, int quantityInInventory)
             : this(id)
         {
             Name = name;
@@ -25,7 +25,7 @@
             QuantityInInventory = quantityInInventory;
         }
 
-        public Product(int id)
+        public Product(Guid id)
         {
             Id = id;
         }

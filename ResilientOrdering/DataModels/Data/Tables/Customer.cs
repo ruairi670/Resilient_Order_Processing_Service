@@ -1,8 +1,8 @@
-﻿namespace OrdersAPI.Data.Tables
+﻿namespace DataModels.Data.Tables
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -23,7 +23,7 @@
             PrimaryAddress = primaryAddress;
         }
 
-        public Customer(int id, string firstName, string lastName, string email, string primaryAddress)
+        public Customer(Guid id, string firstName, string lastName, string email, string primaryAddress)
             : this(id)
         {
             FirstName = firstName;
@@ -32,7 +32,7 @@
             PrimaryAddress = primaryAddress;
         }
 
-        public Customer(int id)
+        public Customer(Guid id)
         {
             Id = id;
         }

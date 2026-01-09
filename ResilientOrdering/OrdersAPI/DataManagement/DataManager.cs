@@ -1,4 +1,4 @@
-﻿using OrdersAPI.Data;
+﻿using DataModels.Data;
 
 namespace OrdersAPI.DataManagement
 {

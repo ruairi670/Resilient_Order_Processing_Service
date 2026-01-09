@@ -1,12 +1,12 @@
-﻿using OrdersAPI.Data.DataTransferObjects.Base;
-using OrdersAPI.Data.DataTransferObjects.CustomerDTOs;
-using OrdersAPI.Data.DataTransferObjects.ProductDTOs;
+﻿using DataModels.Data.DataTransferObjects.Base;
+using DataModels.Data.DataTransferObjects.CustomerDTOs;
+using DataModels.Data.DataTransferObjects.ProductDTOs;
 
-namespace OrdersAPI.Data.DataTransferObjects.OrderDTOs
+namespace DataModels.Data.DataTransferObjects.OrderDTOs
 {
     public class OrderDTO : BaseDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public CustomerDTO Customer { get; set; }
 

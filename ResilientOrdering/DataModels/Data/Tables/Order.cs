@@ -1,12 +1,15 @@
-﻿namespace OrdersAPI.Data.Tables
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DataModels.Data.Tables
 {
+    [Table("Orders")]
     public class Order
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
-        public List<int> ProductIds { get; set; } = new List<int>();
+        public List<Guid> ProductIds { get; set; } = new List<Guid>();
 
         public DateTime OrderDate { get; set; }
 
@@ -31,7 +34,7 @@
         {
         }
 
-        public Order (int customerId, List<int> productIds, DateTime orderDate, DateTime dateToBeDelivered)
+        public Order (Guid customerId, List<Guid> productIds, DateTime orderDate, DateTime dateToBeDelivered)
         {
             CustomerId = customerId;
             ProductIds = productIds;
@@ -43,7 +46,7 @@
             Delivered = false;
         }
 
-        public Order(int id, int customerId, List<int> productIds, DateTime orderDate, DateTime dateToBeDelivered) : this(id)
+        public Order(Guid id, Guid customerId, List<Guid> productIds, DateTime orderDate, DateTime dateToBeDelivered) : this(id)
         {
             CustomerId = customerId;
             ProductIds = productIds;
@@ -60,7 +63,7 @@
         /// Constructor for testing purposes, need to keep record of Ids for testing getter methods
         /// </summary>
         /// <param name="id"></param>
-        public Order(int id)
+        public Order(Guid id)
         {
             Id = id;
         }

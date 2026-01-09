@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using OrdersAPI.Data.DataTransferObjects;
-using OrdersAPI.Data.DataTransferObjects.OrderDTOs;
-using OrdersAPI.Data.Tables;
+﻿using DataModels.Data.DataTransferObjects;
+using DataModels.Data.DataTransferObjects.OrderDTOs;
+using Microsoft.AspNetCore.Mvc;
 using OrdersAPI.DataManagement;
 using System.Collections.Generic;
 
@@ -37,7 +36,7 @@ namespace OrdersAPI.Controllers
         }
 
         [HttpGet("GetOrders/{id}")]
-        public NetworkTransferObject<OrderDTO> GetOrder(int id)
+        public NetworkTransferObject<OrderDTO> GetOrder(Guid id)
         {
             NetworkTransferObject<OrderDTO> order = _orderManager.GetOrder(id);
 
@@ -47,9 +46,9 @@ namespace OrdersAPI.Controllers
         }
 
         [HttpPost("PostOrder")]
-        public int? PostOrder([FromBody] NewOrderDTO newOrder)
+        public Guid? PostOrder([FromBody] NewOrderDTO newOrder)
         {
-            int? newOrderId = _orderManager.AddNewOrder(newOrder);
+            Guid? newOrderId = _orderManager.AddNewOrder(newOrder);
 
             return newOrderId;
         }

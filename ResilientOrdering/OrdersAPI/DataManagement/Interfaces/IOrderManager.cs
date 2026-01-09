@@ -1,14 +1,14 @@
-﻿using OrdersAPI.Data.DataTransferObjects;
-using OrdersAPI.Data.DataTransferObjects.OrderDTOs;
+﻿using DataModels.Data.DataTransferObjects;
+using DataModels.Data.DataTransferObjects.OrderDTOs;
 
 namespace OrdersAPI.DataManagement.Interfaces
 {
     public interface IOrderManager
     {
-        NetworkTransferObject<OrderDTO> GetOrder(int orderId);
+        NetworkTransferObject<OrderDTO> GetOrder(Guid orderId);
 
         NetworkTransferObject<List<OrderDTO>> GetOrders();
 
-        int? AddNewOrder(NewOrderDTO newOrder);
+        Guid? AddNewOrder(NewOrderDTO newOrder);
     }
 }

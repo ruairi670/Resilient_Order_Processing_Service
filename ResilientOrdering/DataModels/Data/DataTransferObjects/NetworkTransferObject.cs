@@ -1,6 +1,6 @@
-﻿using OrdersAPI.Data.DataTransferObjects.Base;
+﻿using DataModels.Data.DataTransferObjects.Base;
 
-namespace OrdersAPI.Data.DataTransferObjects
+namespace DataModels.Data.DataTransferObjects
 {
     public class NetworkTransferObject<T>
         //where T : BaseDTO
